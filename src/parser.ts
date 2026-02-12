@@ -24,14 +24,17 @@ const resolveApiKey = (options: ParseQueryOptions): string => {
 const buildClient = (options: ParseQueryOptions): OpenAI =>
   options.client ?? new OpenAI({ apiKey: resolveApiKey(options) });
 
-const systemPrompt =
-  "You parse job search queries into structured filters. " +
-  "Return JSON strictly matching the schema. " +
-  "Use hard filters only for supported structured fields: " +
-  "job_title_any, skills_any, workplace_type, commitment_any, seniority_any, location_any, company_non_profit. " +
-  "Use soft filters for mission/values or free-text hints: company_mission_any, description_any. " +
-  "Do not invent synonyms; use values as provided by the query. " +
-  "If nothing matches, return empty arrays.";
+const systemPrompt = `
+You parse job search queries into structured filters.
+Return JSON strictly matching the schema.
+
+Use hard filters only for supported structured fields: job_title_any, skills_any, workplace_type,
+commitment_any, seniority_any, location_any, company_non_profit.
+
+Use soft filters for mission/values or free-text hints: company_mission_any, description_any.
+
+Do not invent synonyms; use values as provided by the query.
+If nothing matches, return empty arrays.`;
 
 export const parseQuery = async (
   query: string,
