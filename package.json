@@ -1,0 +1,9 @@
+{
+  "name": "hiring-cafe",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "openai": "^4.68.0",
+    "zod": "^3.24.1"
+  }
+}

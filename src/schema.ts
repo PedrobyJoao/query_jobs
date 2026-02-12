@@ -1,4 +1,4 @@
-export type Root = Job[];
+export type Jobs = Job[];
 
 export interface Job {
   id: string;
