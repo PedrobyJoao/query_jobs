@@ -43,28 +43,30 @@ type HardHandlerMap = {
   ) => boolean;
 };
 
-const normalize = (value: string): string => value.trim().toLowerCase();
+export const query = (data: ReadonlyArray<Job>, plan: Filters): Job[] =>
+  data.filter(matchesHardFilters(plan.hard));
 
-const compactStrings = (
-  values: ReadonlyArray<string | null | undefined>,
-): string[] =>
-  values
-    .filter((value): value is string => typeof value === "string")
-    .map(normalize)
-    .filter((value) => value.length > 0);
+const matchesHardFilters = (filters: ReadonlyArray<HardFilter>) => (job: Job) =>
+  filters.every((filter) => applyHardFilter(job, filter));
 
-const normalizeList = (values: ReadonlyArray<string>): string[] =>
-  compactStrings(values);
+const applyHardFilter = (job: Job, filter: HardFilter): boolean => {
+  const handler = hardHandlers[filter.kind] as (
+    job: Job,
+    filter: HardFilter,
+  ) => boolean;
+  return handler(job, filter);
+};
 
-const hasAny = (
-  tokens: ReadonlyArray<string>,
-  values: ReadonlyArray<string>,
-): boolean => {
-  if (tokens.length === 0 || values.length === 0) {
-    return false;
-  }
-  const tokenSet = new Set(tokens);
-  return normalizeList(values).some((value) => tokenSet.has(value));
+const hardHandlers: HardHandlerMap = {
+  job_title_any: (job, filter) => hasAny(titleTokens(job), filter.values),
+  skills_any: (job, filter) => hasAny(skillTokens(job), filter.values),
+  workplace_type: (job, filter) =>
+    workplaceTypeToken(job) === normalize(filter.value),
+  commitment_any: (job, filter) => hasAny(commitmentTokens(job), filter.values),
+  seniority_any: (job, filter) => hasAny(seniorityTokens(job), filter.values),
+  location_any: (job, filter) => matchesLocationAny(job, filter.values),
+  company_non_profit: (job, filter) =>
+    job.v5_processed_company_data.is_non_profit === filter.value,
 };
 
 const titleTokens = (job: Job): string[] => {
@@ -104,8 +106,17 @@ const seniorityTokens = (job: Job): string[] => {
 const workplaceTypeToken = (job: Job): string =>
   normalize(job.v7_processed_job_data.work_arrangement.workplace_type);
 
-const hasLocationFields = (token: LocationToken): boolean =>
-  Boolean(token.city || token.state || token.countryCode || token.continent);
+const matchesLocationAny = (job: Job, values: ReadonlyArray<LocationToken>) => {
+  const locations =
+    job.v7_processed_job_data.work_arrangement.workplace_locations;
+  const tokens = values.filter(hasLocationFields);
+  if (locations.length === 0 || tokens.length === 0) {
+    return false;
+  }
+  return tokens.some((token) =>
+    locations.some((location) => matchesLocationToken(location, token)),
+  );
+};
 
 const matchesLocationToken = (
   location: WorkplaceLocation,
@@ -127,43 +138,32 @@ const matchesLocationToken = (
   );
 };
 
-const matchesLocationAny = (job: Job, values: ReadonlyArray<LocationToken>) => {
-  const locations =
-    job.v7_processed_job_data.work_arrangement.workplace_locations;
-  const tokens = values.filter(hasLocationFields);
-  if (locations.length === 0 || tokens.length === 0) {
+const hasLocationFields = (token: LocationToken): boolean =>
+  Boolean(token.city || token.state || token.countryCode || token.continent);
+
+const hasAny = (
+  tokens: ReadonlyArray<string>,
+  values: ReadonlyArray<string>,
+): boolean => {
+  if (tokens.length === 0 || values.length === 0) {
     return false;
   }
-  return tokens.some((token) =>
-    locations.some((location) => matchesLocationToken(location, token)),
-  );
+  const tokenSet = new Set(tokens);
+  return normalizeList(values).some((value) => tokenSet.has(value));
 };
 
-const hardHandlers: HardHandlerMap = {
-  job_title_any: (job, filter) => hasAny(titleTokens(job), filter.values),
-  skills_any: (job, filter) => hasAny(skillTokens(job), filter.values),
-  workplace_type: (job, filter) =>
-    workplaceTypeToken(job) === normalize(filter.value),
-  commitment_any: (job, filter) => hasAny(commitmentTokens(job), filter.values),
-  seniority_any: (job, filter) => hasAny(seniorityTokens(job), filter.values),
-  location_any: (job, filter) => matchesLocationAny(job, filter.values),
-  company_non_profit: (job, filter) =>
-    job.v5_processed_company_data.is_non_profit === filter.value,
-};
+const normalizeList = (values: ReadonlyArray<string>): string[] =>
+  compactStrings(values);
 
-const applyHardFilter = (job: Job, filter: HardFilter): boolean => {
-  const handler = hardHandlers[filter.kind] as (
-    job: Job,
-    filter: HardFilter,
-  ) => boolean;
-  return handler(job, filter);
-};
-
-const matchesHardFilters = (filters: ReadonlyArray<HardFilter>) => (job: Job) =>
-  filters.every((filter) => applyHardFilter(job, filter));
-
-export const query = (data: ReadonlyArray<Job>, plan: Filters): Job[] =>
-  data.filter(matchesHardFilters(plan.hard));
+const compactStrings = (
+  values: ReadonlyArray<string | null | undefined>,
+): string[] =>
+  values
+    .filter((value): value is string => typeof value === "string")
+    .map(normalize)
+    .filter((value) => value.length > 0);
 
 const uniq = (values: ReadonlyArray<string>): string[] =>
   Array.from(new Set(values));
+
+const normalize = (value: string): string => value.trim().toLowerCase();
