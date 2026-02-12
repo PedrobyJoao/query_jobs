@@ -24,6 +24,13 @@ We can do this three different ways:
 
 > Didn't decide yet on the type of API.
 
+Conclusion: We'll use a REST API with one endpoint `/search`.
+
+This endpoint has an optional param `session_id` in which case if it's set,
+it means the user is refining a given previous query.
+
+(state is maintaned by the server for each session)
+
 ### v0.0: How to really filter the data?
 
 #### v0.0: input
