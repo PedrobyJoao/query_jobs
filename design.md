@@ -54,8 +54,12 @@ Types of filters:
 
 Note: Preferable: When iterating through the json data, we should apply all necessary filters for each job.
 
-> Missing Policy: We should decide what to do when the input query filter is not an info present in the
-> a given job data.
+Missing policy: hard filters fail on missing data (precision‑first), soft filters ignore missing data (don’t penalize)
+
+Note that One‑to‑one mapping works for most hard filters, but nested arrays (titles/skills),
+range fields (salary), and derived logic (location radius, “remote” synonyms)
+need custom handlers instead of raw path strings. - Default missing policy: hard filters fail
+on missing data (precision‑first), soft filters ignore missin
 
 #### v0.0: proposal
 
