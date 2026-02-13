@@ -7,7 +7,7 @@ import { URL } from "node:url";
 
 import { query, type QueryInput, type QueryResponse } from "./query";
 
-const defaultPort = "3000";
+const DEFAULT_PORT = 3000;
 
 export type ServerOptions = {
   readonly port?: number;
@@ -49,11 +49,7 @@ const handleQuery = async (
       return;
     }
 
-    // todo: QueryInput should not have dataPath from API call
-    const input: QueryInput =
-      dataPath && !payload.dataPath ? { ...payload, dataPath } : payload;
-
-    const result: QueryResponse = await query(input);
+    const result: QueryResponse = await query(payload, { dataPath });
     writeJson(res, 200, result);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
@@ -86,9 +82,8 @@ const writeJson = (
   res.end(body);
 };
 
-// getPort gets either from env or a default num
 const getPort = (): number => {
-  const raw = process.env.PORT ?? defaultPort;
+  const raw = process.env.PORT ?? String(DEFAULT_PORT);
   const port = Number.parseInt(raw, 10);
-  return Number.isNaN(port) ? 3000 : port;
+  return Number.isNaN(port) ? DEFAULT_PORT : port;
 };

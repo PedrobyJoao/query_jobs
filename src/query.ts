@@ -5,13 +5,16 @@ import { parseQuery } from "./parser";
 import { createJobStream, defaultDataPath } from "./data_source";
 import { ensureSession, getSessionIds, setSessionIds } from "./session";
 
-const defaultLimit = 200;
+const DEFAULT_QUERY_LIMIT = 200;
 
 export type QueryInput = {
   readonly query: string;
   readonly session_id?: string;
-  readonly dataPath?: string;
   readonly limit?: number;
+};
+
+export type QueryOptions = {
+  readonly dataPath?: string;
 };
 
 export type QueryStreamOptions = {
@@ -29,12 +32,15 @@ export type QueryResponse = {
   readonly ids: ReadonlyArray<string>;
 };
 
-export const query = async (input: QueryInput): Promise<QueryResponse> => {
+export const query = async (
+  input: QueryInput,
+  options: QueryOptions = {},
+): Promise<QueryResponse> => {
   const sessionId = ensureSession(input.session_id);
-  const dataPath = input.dataPath ?? defaultDataPath();
+  const dataPath = options.dataPath ?? defaultDataPath();
   const source = createJobStream(dataPath);
   const filters = await parseQuery(input.query);
-  const limit = input.limit ?? defaultLimit;
+  const limit = resolveLimit(input.limit);
 
   console.log("[query] session_id", sessionId);
   console.log("[query] filters", JSON.stringify(filters));
@@ -44,9 +50,7 @@ export const query = async (input: QueryInput): Promise<QueryResponse> => {
     sessionIds.length === 0 ? source : filterByIds(source, new Set(sessionIds));
 
   console.log("[query] initiating pipeline handling", sessionId);
-  const { ids, count } = await queryStream(sessionJobs, filters, {
-    limit,
-  });
+  const { ids, count } = await queryStream(sessionJobs, filters, { limit });
 
   console.log("[query] done. updating session with returned IDs", sessionId);
   setSessionIds(sessionId, ids);
@@ -63,7 +67,7 @@ export const queryStream = async (
   filters: Filters,
   options: QueryStreamOptions = {},
 ): Promise<QueryStreamResult> => {
-  const limit = options.limit ?? defaultLimit;
+  const limit = resolveLimit(options.limit);
   if (limit <= 0) {
     return { ids: [], count: 0 };
   }
@@ -84,13 +88,15 @@ export const queryStream = async (
   return { ids, count: ids.length };
 };
 
-const filterByIds = async function* (
+export const filterByIds = async function* (
   source: AsyncIterable<Job>,
-  keepJobsByIDs: ReadonlySet<string>,
+  keepIds: ReadonlySet<string>,
 ): AsyncGenerator<Job> {
   for await (const job of source) {
-    if (keepJobsByIDs.has(job.id)) {
+    if (keepIds.has(job.id)) {
       yield job;
     }
   }
 };
+
+const resolveLimit = (limit?: number): number => limit ?? DEFAULT_QUERY_LIMIT;

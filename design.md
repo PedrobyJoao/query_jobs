@@ -176,3 +176,8 @@ For the next iteration:
 
 1. Support to big data payloads
 2. refine
+
+### v0.1: big data payloads
+
+A `query` func will simply rely on an async iterator instead
+of all data loaded at once.
