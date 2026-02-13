@@ -1,3 +1,5 @@
+import { performance } from "node:perf_hooks";
+
 import type { Job } from "./schema";
 import type { Filters } from "./filters";
 import { buildHardPredicate } from "./filters";
@@ -7,6 +9,7 @@ import { ensureSession, getSessionIds, setSessionIds } from "./session";
 import type { JobSummary } from "./job_summary";
 import { toJobSummary } from "./job_summary";
 
+const MS_PER_SEC = 1000;
 const DEFAULT_QUERY_LIMIT = 200;
 
 export type QueryInput = {
@@ -34,6 +37,7 @@ export type QueryResponse = {
   readonly session_id: string;
   readonly count: number;
   readonly scannedJobs: number;
+  readonly elapsedSec: number;
   readonly results: ReadonlyArray<JobSummary>;
 };
 
@@ -41,6 +45,7 @@ export const query = async (
   input: QueryInput,
   options: QueryOptions = {},
 ): Promise<QueryResponse> => {
+  const startTime = performance.now();
   const sessionId = ensureSession(input.session_id);
   const dataPath = options.dataPath ?? defaultDataPath();
   const source = createJobStream(dataPath);
@@ -64,14 +69,21 @@ export const query = async (
       limit,
     },
   );
+  const elapsedSec = (performance.now() - startTime) / MS_PER_SEC;
+  const elapsedSecRounded = Number(elapsedSec.toFixed(3));
 
-  console.log("[query] done. updating session with returned IDs", sessionId);
+  console.log(
+    "[query] done. updating session with returned IDs",
+    sessionId,
+    { elapsedSec: elapsedSecRounded },
+  );
   setSessionIds(sessionId, ids);
 
   return {
     session_id: sessionId,
     count,
     scannedJobs,
+    elapsedSec: elapsedSecRounded,
     results,
   };
 };
