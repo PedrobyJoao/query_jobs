@@ -29,7 +29,10 @@ Conclusion: We'll use a REST API with one endpoint `/search`.
 This endpoint has an optional param `session_id` in which case if it's set,
 it means the user is refining a given previous query.
 
-(state is maintaned by the server for each session)
+State is maintaned by the server for each session.
+
+> In a production env, a garbage collector would be needed
+> to remove stale sessions.
 
 ### v0.0: How to really filter the data?
 
@@ -69,8 +72,7 @@ Missing policy: hard filters fail on missing data (precision‑first), soft filt
 
 Note that One‑to‑one mapping works for most hard filters, but nested arrays (titles/skills),
 range fields (salary), and derived logic (location radius, “remote” synonyms)
-need custom handlers instead of raw path strings. - Default missing policy: hard filters fail
-on missing data (precision‑first), soft filters ignore missin
+need custom handlers instead of raw path strings.
 
 #### v0.0: proposal
 
@@ -81,10 +83,7 @@ def main():
     filters = processQuery(query) :: [Filter]
     filteredJobs = []
     for job in jobs:
-        # satisfies all filters will make the distinction
-        # between hard and soft filters.
-        # OR if necessary, we can use a `satisfies_hard_filters`
-        # and use a `satisfies_soft_filters` for probabilities/scores
+        # satisfies all hard filters will make the distinction
         if satisfies_filters(filters, job):
             filteredJobs.append(job)
 
@@ -95,13 +94,14 @@ def main():
 
 **Functional requirements**:
 
-- Refine must be strictly narrowing (monotonic: it can only shrink results, not broaden them).
+- Server with REST API maintaining state for each session.
+- Must apply only hard filters for now.
 
 **Non-functional requirements**:
 
 - Considering jobs are not indexed, the jobs list must be iterated at most once for each query.
 
-### v0.0. Tradeoffs, decisions and challenges:
+### v0.0. Brainstorming: Tradeoffs, decisions and challenges
 
 **should refine be strictly narrowing (monotonic), or can it broaden results?**
 
@@ -151,4 +151,6 @@ Instead, it's best to have our AI-parser to generate synonyms for job titles.
 
 ### 0.0. For the next iteration:
 
-1. bm25, score analysis + indexing
+1. soft filters
+2. refine
+3. bm25, score analysis + indexing
