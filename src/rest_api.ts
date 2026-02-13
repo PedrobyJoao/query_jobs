@@ -5,10 +5,17 @@ import {
 } from "node:http";
 import { URL } from "node:url";
 
-import { search, type SearchInput, type SearchResponse } from "./session";
+import {
+  ensureDataLoaded,
+  defaultDataPath,
+  search,
+  type SearchInput,
+  type SearchResponse,
+} from "./session";
 
 export type ServerOptions = {
   readonly port?: number;
+  readonly dataPath?: string;
 };
 
 const defaultPort = (): number => {
@@ -66,8 +73,10 @@ const handleSearch = async (
   }
 };
 
-export const startServer = (options: ServerOptions = {}) => {
+export const startServer = async (options: ServerOptions = {}) => {
   const port = options.port ?? defaultPort();
+  const dataPath = options.dataPath ?? defaultDataPath();
+
   const server = createServer(async (req, res) => {
     const url = new URL(req.url ?? "/", "http://localhost");
     if (url.pathname === "/search") {
@@ -79,5 +88,6 @@ export const startServer = (options: ServerOptions = {}) => {
   });
 
   server.listen(port);
+  await ensureDataLoaded(dataPath);
   return server;
 };

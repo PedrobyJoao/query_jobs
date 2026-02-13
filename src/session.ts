@@ -22,8 +22,17 @@ const sessions = new Map<string, ReadonlyArray<string>>();
 let cachedJobs: ReadonlyArray<Job> | null = null;
 let cachedJobsById: Map<string, Job> | null = null;
 
-const defaultDataPath = (): string =>
+export const defaultDataPath = (): string =>
   new URL("../data.jsonl", import.meta.url).pathname;
+
+export const ensureDataLoaded = async (dataPath: string): Promise<void> => {
+  if (cachedJobs) {
+    return;
+  }
+  const jobs = await loadJobs(dataPath);
+  cachedJobs = jobs;
+  cachedJobsById = new Map(jobs.map((job) => [job.id, job]));
+};
 
 const loadJobs = async (dataPath: string): Promise<ReadonlyArray<Job>> => {
   const stream = fs.createReadStream(dataPath, { encoding: "utf8" });
@@ -39,15 +48,6 @@ const loadJobs = async (dataPath: string): Promise<ReadonlyArray<Job>> => {
   }
 
   return jobs;
-};
-
-const ensureDataLoaded = async (dataPath: string): Promise<void> => {
-  if (cachedJobs) {
-    return;
-  }
-  const jobs = await loadJobs(dataPath);
-  cachedJobs = jobs;
-  cachedJobsById = new Map(jobs.map((job) => [job.id, job]));
 };
 
 const ensureSession = (sessionId?: string): string => {
