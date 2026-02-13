@@ -43,11 +43,8 @@ type HardHandlerMap = {
   ) => boolean;
 };
 
-export const query = (data: ReadonlyArray<Job>, plan: Filters): Job[] =>
-  data.filter(matchesHardFilters(plan.hard));
-
-const matchesHardFilters = (filters: ReadonlyArray<HardFilter>) => (job: Job) =>
-  filters.every((filter) => applyHardFilter(job, filter));
+export const buildHardPredicate = (filters: Filters) => (job: Job) =>
+  filters.hard.every((filter) => applyHardFilter(job, filter));
 
 const applyHardFilter = (job: Job, filter: HardFilter): boolean => {
   const handler = hardHandlers[filter.kind] as (
