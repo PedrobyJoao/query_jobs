@@ -26,12 +26,14 @@ export type QueryStreamOptions = {
 export type QueryStreamResult = {
   readonly ids: ReadonlyArray<string>; // TODO: remove it, it can be fetch from results
   readonly results: ReadonlyArray<JobSummary>;
-  readonly count: number;
+  readonly count: number; // TODO: remove it, it can be fetch from results
+  readonly scannedJobs: number;
 };
 
 export type QueryResponse = {
   readonly session_id: string;
   readonly count: number;
+  readonly scannedJobs: number;
   readonly results: ReadonlyArray<JobSummary>;
 };
 
@@ -42,20 +44,26 @@ export const query = async (
   const sessionId = ensureSession(input.session_id);
   const dataPath = options.dataPath ?? defaultDataPath();
   const source = createJobStream(dataPath);
-  const filters = await parseQuery(input.query);
-  const limit = resolveLimit(input.limit);
 
   console.log("[query] session_id", sessionId);
-  console.log("[query] filters", JSON.stringify(filters));
+  console.log("[query] resolving query with llms", input.query);
+  const filters = await parseQuery(input.query);
+  console.log("[query] user query parsed to filters", JSON.stringify(filters));
+
+  const limit = resolveLimit(input.limit);
 
   const sessionIds = getSessionIds(sessionId);
   const sessionJobs =
     sessionIds.length === 0 ? source : filterByIds(source, new Set(sessionIds));
 
   console.log("[query] initiating pipeline handling", sessionId);
-  const { ids, results, count } = await queryStream(sessionJobs, filters, {
-    limit,
-  });
+  const { ids, results, count, scannedJobs } = await queryStream(
+    sessionJobs,
+    filters,
+    {
+      limit,
+    },
+  );
 
   console.log("[query] done. updating session with returned IDs", sessionId);
   setSessionIds(sessionId, ids);
@@ -63,6 +71,7 @@ export const query = async (
   return {
     session_id: sessionId,
     count,
+    scannedJobs,
     results,
   };
 };
@@ -74,14 +83,16 @@ export const queryStream = async (
 ): Promise<QueryStreamResult> => {
   const limit = resolveLimit(options.limit);
   if (limit <= 0) {
-    return { ids: [], count: 0 };
+    return { ids: [], results: [], count: 0, scannedJobs: 0 };
   }
 
   const predicate = buildHardPredicate(filters);
   const ids: string[] = [];
   const results: JobSummary[] = [];
+  let scannedJobs = 0;
 
   for await (const job of source) {
+    scannedJobs += 1;
     if (!predicate(job)) {
       continue;
     }
@@ -92,7 +103,7 @@ export const queryStream = async (
     }
   }
 
-  return { ids, results, count: ids.length };
+  return { ids, results, count: ids.length, scannedJobs };
 };
 
 export const filterByIds = async function* (
