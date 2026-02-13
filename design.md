@@ -50,6 +50,10 @@ Let's try to work out based on the examples:
 
 Now, how to encode the filter type is the question? It'll be only a string?
 
+**Note that an LLM will be responsible for parsing the user's query into filters.**
+
+Conclusion: we created a Filter type
+
 #### v0.0: filtering
 
 Some thoughts:
@@ -97,7 +101,7 @@ def main():
 
 - Considering jobs are not indexed, the jobs list must be iterated at most once for each query.
 
-### v0.0. Tradeoffs:
+### v0.0. Tradeoffs, decisions and challenges:
 
 **should refine be strictly narrowing (monotonic), or can it broaden results?**
 
@@ -129,6 +133,21 @@ f: time complexity of all filters being applied
 1. n + (k * f)
 2. f * n
 ```
+
+**job title it's a hard filter but also kinda soft**
+
+If we consider job title as a hard filter, the matching will rely
+on the explicit and inferred job titles.
+
+So suppose the user write `developer` and the parser does not generate
+synonyms like `software engineer`, if it's not included in the explicity/inferred,
+the user will miss some opportunities.
+
+I don't think making it as a soft filter is a very good option
+since there are not specific embeddings for job titles. So maybe only bm25 would
+be a good option here (and I'm not even sure).
+
+Instead, it's best to have our AI-parser to generate synonyms for job titles.
 
 ### 0.0. For the next iteration:
 
