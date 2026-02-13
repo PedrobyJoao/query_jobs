@@ -1,5 +1,3 @@
-export type Jobs = Job[];
-
 export interface Job {
   id: string;
   apply_url: string;

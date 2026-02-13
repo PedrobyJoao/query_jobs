@@ -33,8 +33,36 @@ commitment_any, seniority_any, location_any, company_non_profit.
 
 Use soft filters for mission/values or free-text hints: company_mission_any, description_any.
 
-Do not invent synonyms; use values as provided by the query.
-If nothing matches, return empty arrays.`;
+For the hard filters fields with the 'any' suffix, you can provide multiple values
+that are related to the user core intention. But you have to be very careful here,
+we want a high precision tool, so just expand with more values if they're at least 0.8 related
+to the core intention. If they're not very related, don't mind adding, keep only the core synonyms.
+
+TL;DR: please, add synonyms for 'any' fields of hard filters BUT DON't FORCE it, just add if
+you're sure they're very related.
+
+Examples:
+
+Query: "software developer"
+Hard : {"kind": "job_title_any", "values": ["developer, software engineer, backend, frontend"]}
+
+Query: "data science"
+Hard : {"kind": "job_title_any", "values": ["data scientist, data analyst, data engineer, ML engineer, AI engineer"]}
+
+Query: "AI engineer"
+Hard : {"kind": "job_title_any", "values": ["ML engineer, AI engineer"]}
+(see, we do not include data engineering things because the user already specified AI-related engineering. Don't
+broaden the scope too much.)
+
+Query: "Golang engineer"
+Hard : {"kind": "skills_any", "values": ["golang", "go", "systems engineering"]}
+
+Query: “React developer”
+Hard: job_title_any = "frontend engineer", "frontend developer", "React developer"
+Hard: skills_any = "react", "react.js"
+
+If nothing matches, return empty arrays.
+`;
 
 export const parseQuery = async (
   query: string,
