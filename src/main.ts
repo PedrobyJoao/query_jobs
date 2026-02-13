@@ -1,3 +1,6 @@
 import { startServer } from "./rest_api";
 
-startServer();
+// use path xxx.json
+startServer({
+  dataPath: "./mock_data.json",
+});

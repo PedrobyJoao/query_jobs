@@ -1,0 +1,1307 @@
+[
+  {
+    "id": "mock-frontend-001",
+    "apply_url": "https://example.com/jobs/mock-frontend-001",
+    "job_information": {
+      "title": "Frontend Engineer",
+      "job_title_raw": "Frontend Engineer",
+      "description": "Build accessible user interfaces for a product dashboard.",
+      "stripped_description": "Build accessible user interfaces for a product dashboard.",
+      "company_info": { "name": "Aperture Labs" }
+    },
+    "v5_processed_company_data": {
+      "name": "Aperture Labs",
+      "image_url": "",
+      "subsidiaries": [],
+      "parent_company": null,
+      "website": "https://aperturelabs.example",
+      "linkedin_url": "",
+      "industries": ["Software"],
+      "activities": ["web development", "saas"],
+      "tagline": "Tools for modern teams.",
+      "is_non_profit": false,
+      "is_public_company": false,
+      "is_dissolved": false,
+      "is_acquired": false,
+      "num_employees": 120,
+      "year_founded": 2015,
+      "headquarters_country": "United States",
+      "total_funding_amount": null,
+      "total_funding_currency": null,
+      "latest_investment_amount": null,
+      "latest_investment_currency": null,
+      "latest_investment_year": null,
+      "latest_investment_series": null,
+      "investors": [],
+      "stock_exchange": "",
+      "stock_symbol": "",
+      "latest_revenue": 0,
+      "latest_revenue_currency": "USD",
+      "latest_revenue_year": 0
+    },
+    "v7_processed_job_data": {
+      "estimated_post_date": "2026-02-01T00:00:00Z",
+      "schedule_requirements": {
+        "shifts": {
+          "on_call_requirement": "None",
+          "holiday_availability_required": false,
+          "weekend_availability_required": false,
+          "overtime_required": false,
+          "shift_types_available": []
+        },
+        "travel": {
+          "land_travel_requirement": "None",
+          "air_travel_requirement": "None"
+        }
+      },
+      "embedding_text_explicit": "",
+      "education": { "explicit": [], "inferred": [] },
+      "work_arrangement": {
+        "workplace_type": "Remote",
+        "individual_contributor_or_people_manager": "Individual Contributor",
+        "commitment": ["Full Time"],
+        "workplace_locations": [
+          {
+            "continent": "North America",
+            "country_code": "US",
+            "city": "San Francisco",
+            "kind": "city",
+            "county": "San Francisco County",
+            "geographic_coordinates": { "lon": -122.4194, "lat": 37.7749 },
+            "state": "California"
+          }
+        ]
+      },
+      "original_job_description_language": "en",
+      "credentials": { "explicit": [], "inferred": [] },
+      "diversity_hiring": { "military_veterans": false, "fair_chance": false },
+      "embedding_inferred_vector": [],
+      "geo_locations": [],
+      "embedding_text_company": "",
+      "skills": {
+        "explicit": [
+          { "expanded_terms": ["reactjs", "react.js"], "value": "React" },
+          { "expanded_terms": ["typescript"], "value": "TypeScript" },
+          { "expanded_terms": ["css", "css3"], "value": "CSS" }
+        ],
+        "inferred": []
+      },
+      "company_profile": {
+        "website": "https://aperturelabs.example",
+        "activities": ["web development", "saas"],
+        "name": "Aperture Labs",
+        "organization_types": ["Private Company"],
+        "tagline": "Tools for modern teams.",
+        "industry": "Software"
+      },
+      "job_titles": {
+        "explicit": {
+          "expanded_terms": ["front end engineer", "frontend developer"],
+          "value": "Frontend Engineer"
+        },
+        "inferred": [
+          { "expanded_terms": ["software engineer"], "value": "Web Developer" }
+        ]
+      },
+      "embedding_company_vector": [],
+      "compensation_and_benefits": {
+        "benefits": {
+          "tuition_reimbursement": false,
+          "retirement_plan": true,
+          "visa_sponsorship": false,
+          "relocation_assistance": false,
+          "generous_paid_time_off": true,
+          "generous_parental_leave": false,
+          "401k_matching": true,
+          "four_day_work_week": false
+        },
+        "salary": { "high": 145000, "low": 115000, "currency": "USD", "frequency": "Yearly" }
+      },
+      "embedding_text_inferred": "",
+      "processed_at": "2026-02-01T00:00:00Z",
+      "embedding_explicit_vector": [],
+      "experience_requirements": {
+        "min_years_breakdown": { "industry_and_role_yoe": 3, "management_and_leadership_yoe": 0 },
+        "security_clearance": "None",
+        "seniority_level": "Mid",
+        "language_requirements": ["English"],
+        "is_driver_license_required": false,
+        "requirements_summary": "3+ years building production UIs."
+      }
+    },
+    "_geoloc": [{ "lat": 37.7749, "lon": -122.4194 }]
+  },
+  {
+    "id": "mock-backend-002",
+    "apply_url": "https://example.com/jobs/mock-backend-002",
+    "job_information": {
+      "title": "Backend Engineer",
+      "job_title_raw": "Backend Engineer",
+      "description": "Design and build reliable APIs for logistics workflows.",
+      "stripped_description": "Design and build reliable APIs for logistics workflows.",
+      "company_info": { "name": "Northwind Systems" }
+    },
+    "v5_processed_company_data": {
+      "name": "Northwind Systems",
+      "image_url": "",
+      "subsidiaries": [],
+      "parent_company": null,
+      "website": "https://northwindsystems.example",
+      "linkedin_url": "",
+      "industries": ["SaaS"],
+      "activities": ["backend services", "cloud infrastructure"],
+      "tagline": "Reliable platforms for logistics.",
+      "is_non_profit": false,
+      "is_public_company": false,
+      "is_dissolved": false,
+      "is_acquired": false,
+      "num_employees": 300,
+      "year_founded": 2010,
+      "headquarters_country": "Canada",
+      "total_funding_amount": null,
+      "total_funding_currency": null,
+      "latest_investment_amount": null,
+      "latest_investment_currency": null,
+      "latest_investment_year": null,
+      "latest_investment_series": null,
+      "investors": [],
+      "stock_exchange": "",
+      "stock_symbol": "",
+      "latest_revenue": 0,
+      "latest_revenue_currency": "CAD",
+      "latest_revenue_year": 0
+    },
+    "v7_processed_job_data": {
+      "estimated_post_date": "2026-02-01T00:00:00Z",
+      "schedule_requirements": {
+        "shifts": {
+          "on_call_requirement": "Rotating",
+          "holiday_availability_required": false,
+          "weekend_availability_required": false,
+          "overtime_required": false,
+          "shift_types_available": []
+        },
+        "travel": {
+          "land_travel_requirement": "Minimal",
+          "air_travel_requirement": "None"
+        }
+      },
+      "embedding_text_explicit": "",
+      "education": { "explicit": [], "inferred": [] },
+      "work_arrangement": {
+        "workplace_type": "Onsite",
+        "individual_contributor_or_people_manager": "Individual Contributor",
+        "commitment": ["Full Time"],
+        "workplace_locations": [
+          {
+            "continent": "North America",
+            "country_code": "CA",
+            "city": "Toronto",
+            "kind": "city",
+            "county": "Toronto Division",
+            "geographic_coordinates": { "lon": -79.3832, "lat": 43.6532 },
+            "state": "Ontario"
+          }
+        ]
+      },
+      "original_job_description_language": "en",
+      "credentials": { "explicit": [], "inferred": [] },
+      "diversity_hiring": { "military_veterans": false, "fair_chance": false },
+      "embedding_inferred_vector": [],
+      "geo_locations": [],
+      "embedding_text_company": "",
+      "skills": {
+        "explicit": [
+          { "expanded_terms": ["node", "nodejs"], "value": "Node.js" },
+          { "expanded_terms": ["postgres", "postgresql"], "value": "PostgreSQL" },
+          { "expanded_terms": ["amazon web services"], "value": "AWS" }
+        ],
+        "inferred": []
+      },
+      "company_profile": {
+        "website": "https://northwindsystems.example",
+        "activities": ["backend services", "cloud infrastructure"],
+        "name": "Northwind Systems",
+        "organization_types": ["Private Company"],
+        "tagline": "Reliable platforms for logistics.",
+        "industry": "SaaS"
+      },
+      "job_titles": {
+        "explicit": {
+          "expanded_terms": ["back end engineer", "server engineer"],
+          "value": "Backend Engineer"
+        },
+        "inferred": [
+          { "expanded_terms": ["software engineer"], "value": "Software Engineer" }
+        ]
+      },
+      "embedding_company_vector": [],
+      "compensation_and_benefits": {
+        "benefits": {
+          "tuition_reimbursement": false,
+          "retirement_plan": true,
+          "visa_sponsorship": false,
+          "relocation_assistance": false,
+          "generous_paid_time_off": true,
+          "generous_parental_leave": false,
+          "401k_matching": false,
+          "four_day_work_week": false
+        },
+        "salary": { "high": 165000, "low": 130000, "currency": "CAD", "frequency": "Yearly" }
+      },
+      "embedding_text_inferred": "",
+      "processed_at": "2026-02-01T00:00:00Z",
+      "embedding_explicit_vector": [],
+      "experience_requirements": {
+        "min_years_breakdown": { "industry_and_role_yoe": 5, "management_and_leadership_yoe": 1 },
+        "security_clearance": "None",
+        "seniority_level": "Senior",
+        "language_requirements": ["English"],
+        "is_driver_license_required": false,
+        "requirements_summary": "5+ years building backend services."
+      }
+    },
+    "_geoloc": [{ "lat": 43.6532, "lon": -79.3832 }]
+  },
+  {
+    "id": "mock-data-003",
+    "apply_url": "https://example.com/jobs/mock-data-003",
+    "job_information": {
+      "title": "Data Analyst",
+      "job_title_raw": "Data Analyst",
+      "description": "Analyze product metrics and build reporting dashboards.",
+      "stripped_description": "Analyze product metrics and build reporting dashboards.",
+      "company_info": { "name": "BrightMetrics" }
+    },
+    "v5_processed_company_data": {
+      "name": "BrightMetrics",
+      "image_url": "",
+      "subsidiaries": [],
+      "parent_company": null,
+      "website": "https://brightmetrics.example",
+      "linkedin_url": "",
+      "industries": ["Analytics"],
+      "activities": ["data analytics", "business intelligence"],
+      "tagline": "Clarity for product teams.",
+      "is_non_profit": false,
+      "is_public_company": false,
+      "is_dissolved": false,
+      "is_acquired": false,
+      "num_employees": 80,
+      "year_founded": 2018,
+      "headquarters_country": "United Kingdom",
+      "total_funding_amount": null,
+      "total_funding_currency": null,
+      "latest_investment_amount": null,
+      "latest_investment_currency": null,
+      "latest_investment_year": null,
+      "latest_investment_series": null,
+      "investors": [],
+      "stock_exchange": "",
+      "stock_symbol": "",
+      "latest_revenue": 0,
+      "latest_revenue_currency": "GBP",
+      "latest_revenue_year": 0
+    },
+    "v7_processed_job_data": {
+      "estimated_post_date": "2026-02-01T00:00:00Z",
+      "schedule_requirements": {
+        "shifts": {
+          "on_call_requirement": "None",
+          "holiday_availability_required": false,
+          "weekend_availability_required": false,
+          "overtime_required": false,
+          "shift_types_available": []
+        },
+        "travel": {
+          "land_travel_requirement": "None",
+          "air_travel_requirement": "None"
+        }
+      },
+      "embedding_text_explicit": "",
+      "education": { "explicit": [], "inferred": [] },
+      "work_arrangement": {
+        "workplace_type": "Hybrid",
+        "individual_contributor_or_people_manager": "Individual Contributor",
+        "commitment": ["Full Time"],
+        "workplace_locations": [
+          {
+            "continent": "Europe",
+            "country_code": "GB",
+            "city": "London",
+            "kind": "city",
+            "county": "Greater London",
+            "geographic_coordinates": { "lon": -0.1278, "lat": 51.5074 },
+            "state": "England"
+          }
+        ]
+      },
+      "original_job_description_language": "en",
+      "credentials": { "explicit": [], "inferred": [] },
+      "diversity_hiring": { "military_veterans": false, "fair_chance": false },
+      "embedding_inferred_vector": [],
+      "geo_locations": [],
+      "embedding_text_company": "",
+      "skills": {
+        "explicit": [
+          { "expanded_terms": ["sql"], "value": "SQL" },
+          { "expanded_terms": ["python"], "value": "Python" },
+          { "expanded_terms": ["tableau"], "value": "Tableau" }
+        ],
+        "inferred": []
+      },
+      "company_profile": {
+        "website": "https://brightmetrics.example",
+        "activities": ["data analytics", "business intelligence"],
+        "name": "BrightMetrics",
+        "organization_types": ["Private Company"],
+        "tagline": "Clarity for product teams.",
+        "industry": "Analytics"
+      },
+      "job_titles": {
+        "explicit": { "expanded_terms": ["analytics analyst"], "value": "Data Analyst" },
+        "inferred": [
+          { "expanded_terms": ["business analyst"], "value": "Business Analyst" }
+        ]
+      },
+      "embedding_company_vector": [],
+      "compensation_and_benefits": {
+        "benefits": {
+          "tuition_reimbursement": false,
+          "retirement_plan": true,
+          "visa_sponsorship": false,
+          "relocation_assistance": false,
+          "generous_paid_time_off": true,
+          "generous_parental_leave": false,
+          "401k_matching": false,
+          "four_day_work_week": false
+        },
+        "salary": { "high": 70000, "low": 55000, "currency": "GBP", "frequency": "Yearly" }
+      },
+      "embedding_text_inferred": "",
+      "processed_at": "2026-02-01T00:00:00Z",
+      "embedding_explicit_vector": [],
+      "experience_requirements": {
+        "min_years_breakdown": { "industry_and_role_yoe": 1, "management_and_leadership_yoe": 0 },
+        "security_clearance": "None",
+        "seniority_level": "Junior",
+        "language_requirements": ["English"],
+        "is_driver_license_required": false,
+        "requirements_summary": "1+ years working with analytics data."
+      }
+    },
+    "_geoloc": [{ "lat": 51.5074, "lon": -0.1278 }]
+  },
+  {
+    "id": "mock-product-004",
+    "apply_url": "https://example.com/jobs/mock-product-004",
+    "job_information": {
+      "title": "Product Manager",
+      "job_title_raw": "Product Manager",
+      "description": "Lead product strategy for a patient engagement platform.",
+      "stripped_description": "Lead product strategy for a patient engagement platform.",
+      "company_info": { "name": "Skyline Health" }
+    },
+    "v5_processed_company_data": {
+      "name": "Skyline Health",
+      "image_url": "",
+      "subsidiaries": [],
+      "parent_company": null,
+      "website": "https://skylinehealth.example",
+      "linkedin_url": "",
+      "industries": ["Healthcare Software"],
+      "activities": ["healthcare", "product management"],
+      "tagline": "Better outcomes through software.",
+      "is_non_profit": false,
+      "is_public_company": false,
+      "is_dissolved": false,
+      "is_acquired": false,
+      "num_employees": 260,
+      "year_founded": 2012,
+      "headquarters_country": "United States",
+      "total_funding_amount": null,
+      "total_funding_currency": null,
+      "latest_investment_amount": null,
+      "latest_investment_currency": null,
+      "latest_investment_year": null,
+      "latest_investment_series": null,
+      "investors": [],
+      "stock_exchange": "",
+      "stock_symbol": "",
+      "latest_revenue": 0,
+      "latest_revenue_currency": "USD",
+      "latest_revenue_year": 0
+    },
+    "v7_processed_job_data": {
+      "estimated_post_date": "2026-02-01T00:00:00Z",
+      "schedule_requirements": {
+        "shifts": {
+          "on_call_requirement": "None",
+          "holiday_availability_required": false,
+          "weekend_availability_required": false,
+          "overtime_required": false,
+          "shift_types_available": []
+        },
+        "travel": {
+          "land_travel_requirement": "Minimal",
+          "air_travel_requirement": "Minimal"
+        }
+      },
+      "embedding_text_explicit": "",
+      "education": { "explicit": [], "inferred": [] },
+      "work_arrangement": {
+        "workplace_type": "Remote",
+        "individual_contributor_or_people_manager": "People Manager",
+        "commitment": ["Full Time"],
+        "workplace_locations": [
+          {
+            "continent": "North America",
+            "country_code": "US",
+            "city": "New York",
+            "kind": "city",
+            "county": "New York County",
+            "geographic_coordinates": { "lon": -74.006, "lat": 40.7128 },
+            "state": "New York"
+          }
+        ]
+      },
+      "original_job_description_language": "en",
+      "credentials": { "explicit": [], "inferred": [] },
+      "diversity_hiring": { "military_veterans": false, "fair_chance": false },
+      "embedding_inferred_vector": [],
+      "geo_locations": [],
+      "embedding_text_company": "",
+      "skills": {
+        "explicit": [
+          { "expanded_terms": ["roadmapping", "product roadmap"], "value": "Roadmapping" },
+          { "expanded_terms": ["jira"], "value": "Jira" },
+          { "expanded_terms": ["analytics", "product analytics"], "value": "Analytics" }
+        ],
+        "inferred": []
+      },
+      "company_profile": {
+        "website": "https://skylinehealth.example",
+        "activities": ["healthcare", "product management"],
+        "name": "Skyline Health",
+        "organization_types": ["Private Company"],
+        "tagline": "Better outcomes through software.",
+        "industry": "Healthcare Software"
+      },
+      "job_titles": {
+        "explicit": { "expanded_terms": ["product lead", "pm"], "value": "Product Manager" },
+        "inferred": [
+          { "expanded_terms": ["product owner"], "value": "Product Owner" }
+        ]
+      },
+      "embedding_company_vector": [],
+      "compensation_and_benefits": {
+        "benefits": {
+          "tuition_reimbursement": false,
+          "retirement_plan": true,
+          "visa_sponsorship": false,
+          "relocation_assistance": false,
+          "generous_paid_time_off": true,
+          "generous_parental_leave": true,
+          "401k_matching": true,
+          "four_day_work_week": false
+        },
+        "salary": { "high": 155000, "low": 125000, "currency": "USD", "frequency": "Yearly" }
+      },
+      "embedding_text_inferred": "",
+      "processed_at": "2026-02-01T00:00:00Z",
+      "embedding_explicit_vector": [],
+      "experience_requirements": {
+        "min_years_breakdown": { "industry_and_role_yoe": 6, "management_and_leadership_yoe": 2 },
+        "security_clearance": "None",
+        "seniority_level": "Senior",
+        "language_requirements": ["English"],
+        "is_driver_license_required": false,
+        "requirements_summary": "6+ years leading product initiatives."
+      }
+    },
+    "_geoloc": [{ "lat": 40.7128, "lon": -74.006 }]
+  },
+  {
+    "id": "mock-ux-005",
+    "apply_url": "https://example.com/jobs/mock-ux-005",
+    "job_information": {
+      "title": "UX Designer",
+      "job_title_raw": "UX Designer",
+      "description": "Create user-centered designs for a mobile app suite.",
+      "stripped_description": "Create user-centered designs for a mobile app suite.",
+      "company_info": { "name": "Studio Kinetica" }
+    },
+    "v5_processed_company_data": {
+      "name": "Studio Kinetica",
+      "image_url": "",
+      "subsidiaries": [],
+      "parent_company": null,
+      "website": "https://studiokinetica.example",
+      "linkedin_url": "",
+      "industries": ["Design"],
+      "activities": ["user experience", "product design"],
+      "tagline": "Design that moves people.",
+      "is_non_profit": false,
+      "is_public_company": false,
+      "is_dissolved": false,
+      "is_acquired": false,
+      "num_employees": 40,
+      "year_founded": 2019,
+      "headquarters_country": "Germany",
+      "total_funding_amount": null,
+      "total_funding_currency": null,
+      "latest_investment_amount": null,
+      "latest_investment_currency": null,
+      "latest_investment_year": null,
+      "latest_investment_series": null,
+      "investors": [],
+      "stock_exchange": "",
+      "stock_symbol": "",
+      "latest_revenue": 0,
+      "latest_revenue_currency": "EUR",
+      "latest_revenue_year": 0
+    },
+    "v7_processed_job_data": {
+      "estimated_post_date": "2026-02-01T00:00:00Z",
+      "schedule_requirements": {
+        "shifts": {
+          "on_call_requirement": "None",
+          "holiday_availability_required": false,
+          "weekend_availability_required": false,
+          "overtime_required": false,
+          "shift_types_available": []
+        },
+        "travel": {
+          "land_travel_requirement": "None",
+          "air_travel_requirement": "None"
+        }
+      },
+      "embedding_text_explicit": "",
+      "education": { "explicit": [], "inferred": [] },
+      "work_arrangement": {
+        "workplace_type": "Hybrid",
+        "individual_contributor_or_people_manager": "Individual Contributor",
+        "commitment": ["Contract"],
+        "workplace_locations": [
+          {
+            "continent": "Europe",
+            "country_code": "DE",
+            "city": "Berlin",
+            "kind": "city",
+            "county": "Berlin",
+            "geographic_coordinates": { "lon": 13.405, "lat": 52.52 },
+            "state": "Berlin"
+          }
+        ]
+      },
+      "original_job_description_language": "en",
+      "credentials": { "explicit": [], "inferred": [] },
+      "diversity_hiring": { "military_veterans": false, "fair_chance": false },
+      "embedding_inferred_vector": [],
+      "geo_locations": [],
+      "embedding_text_company": "",
+      "skills": {
+        "explicit": [
+          { "expanded_terms": ["figma"], "value": "Figma" },
+          { "expanded_terms": ["user research"], "value": "User Research" },
+          { "expanded_terms": ["prototyping"], "value": "Prototyping" }
+        ],
+        "inferred": []
+      },
+      "company_profile": {
+        "website": "https://studiokinetica.example",
+        "activities": ["user experience", "product design"],
+        "name": "Studio Kinetica",
+        "organization_types": ["Agency"],
+        "tagline": "Design that moves people.",
+        "industry": "Design"
+      },
+      "job_titles": {
+        "explicit": { "expanded_terms": ["user experience designer"], "value": "UX Designer" },
+        "inferred": [
+          { "expanded_terms": ["product designer"], "value": "Product Designer" }
+        ]
+      },
+      "embedding_company_vector": [],
+      "compensation_and_benefits": {
+        "benefits": {
+          "tuition_reimbursement": false,
+          "retirement_plan": false,
+          "visa_sponsorship": false,
+          "relocation_assistance": false,
+          "generous_paid_time_off": false,
+          "generous_parental_leave": false,
+          "401k_matching": false,
+          "four_day_work_week": true
+        },
+        "salary": { "high": 85000, "low": 65000, "currency": "EUR", "frequency": "Yearly" }
+      },
+      "embedding_text_inferred": "",
+      "processed_at": "2026-02-01T00:00:00Z",
+      "embedding_explicit_vector": [],
+      "experience_requirements": {
+        "min_years_breakdown": { "industry_and_role_yoe": 3, "management_and_leadership_yoe": 0 },
+        "security_clearance": "None",
+        "seniority_level": "Mid",
+        "language_requirements": ["English"],
+        "is_driver_license_required": false,
+        "requirements_summary": "3+ years of UX design experience."
+      }
+    },
+    "_geoloc": [{ "lat": 52.52, "lon": 13.405 }]
+  },
+  {
+    "id": "mock-devops-006",
+    "apply_url": "https://example.com/jobs/mock-devops-006",
+    "job_information": {
+      "title": "DevOps Engineer",
+      "job_title_raw": "DevOps Engineer",
+      "description": "Maintain deployment pipelines and cloud infrastructure.",
+      "stripped_description": "Maintain deployment pipelines and cloud infrastructure.",
+      "company_info": { "name": "CloudForge" }
+    },
+    "v5_processed_company_data": {
+      "name": "CloudForge",
+      "image_url": "",
+      "subsidiaries": [],
+      "parent_company": null,
+      "website": "https://cloudforge.example",
+      "linkedin_url": "",
+      "industries": ["Cloud Infrastructure"],
+      "activities": ["devops", "platform engineering"],
+      "tagline": "Ship faster with confidence.",
+      "is_non_profit": false,
+      "is_public_company": false,
+      "is_dissolved": false,
+      "is_acquired": false,
+      "num_employees": 500,
+      "year_founded": 2008,
+      "headquarters_country": "India",
+      "total_funding_amount": null,
+      "total_funding_currency": null,
+      "latest_investment_amount": null,
+      "latest_investment_currency": null,
+      "latest_investment_year": null,
+      "latest_investment_series": null,
+      "investors": [],
+      "stock_exchange": "",
+      "stock_symbol": "",
+      "latest_revenue": 0,
+      "latest_revenue_currency": "INR",
+      "latest_revenue_year": 0
+    },
+    "v7_processed_job_data": {
+      "estimated_post_date": "2026-02-01T00:00:00Z",
+      "schedule_requirements": {
+        "shifts": {
+          "on_call_requirement": "Rotating",
+          "holiday_availability_required": false,
+          "weekend_availability_required": true,
+          "overtime_required": false,
+          "shift_types_available": []
+        },
+        "travel": {
+          "land_travel_requirement": "Minimal",
+          "air_travel_requirement": "None"
+        }
+      },
+      "embedding_text_explicit": "",
+      "education": { "explicit": [], "inferred": [] },
+      "work_arrangement": {
+        "workplace_type": "Onsite",
+        "individual_contributor_or_people_manager": "Individual Contributor",
+        "commitment": ["Full Time"],
+        "workplace_locations": [
+          {
+            "continent": "Asia",
+            "country_code": "IN",
+            "city": "Bengaluru",
+            "kind": "city",
+            "county": "Bengaluru Urban",
+            "geographic_coordinates": { "lon": 77.5946, "lat": 12.9716 },
+            "state": "Karnataka"
+          }
+        ]
+      },
+      "original_job_description_language": "en",
+      "credentials": { "explicit": [], "inferred": [] },
+      "diversity_hiring": { "military_veterans": false, "fair_chance": false },
+      "embedding_inferred_vector": [],
+      "geo_locations": [],
+      "embedding_text_company": "",
+      "skills": {
+        "explicit": [
+          { "expanded_terms": ["k8s", "kubernetes"], "value": "Kubernetes" },
+          { "expanded_terms": ["terraform"], "value": "Terraform" },
+          { "expanded_terms": ["amazon web services"], "value": "AWS" }
+        ],
+        "inferred": []
+      },
+      "company_profile": {
+        "website": "https://cloudforge.example",
+        "activities": ["devops", "platform engineering"],
+        "name": "CloudForge",
+        "organization_types": ["Private Company"],
+        "tagline": "Ship faster with confidence.",
+        "industry": "Cloud Infrastructure"
+      },
+      "job_titles": {
+        "explicit": { "expanded_terms": ["site reliability engineer", "sre"], "value": "DevOps Engineer" },
+        "inferred": [
+          { "expanded_terms": ["platform engineer"], "value": "Platform Engineer" }
+        ]
+      },
+      "embedding_company_vector": [],
+      "compensation_and_benefits": {
+        "benefits": {
+          "tuition_reimbursement": false,
+          "retirement_plan": true,
+          "visa_sponsorship": false,
+          "relocation_assistance": false,
+          "generous_paid_time_off": false,
+          "generous_parental_leave": false,
+          "401k_matching": false,
+          "four_day_work_week": false
+        },
+        "salary": { "high": 2200000, "low": 1800000, "currency": "INR", "frequency": "Yearly" }
+      },
+      "embedding_text_inferred": "",
+      "processed_at": "2026-02-01T00:00:00Z",
+      "embedding_explicit_vector": [],
+      "experience_requirements": {
+        "min_years_breakdown": { "industry_and_role_yoe": 7, "management_and_leadership_yoe": 2 },
+        "security_clearance": "None",
+        "seniority_level": "Lead",
+        "language_requirements": ["English"],
+        "is_driver_license_required": false,
+        "requirements_summary": "7+ years in DevOps or SRE roles."
+      }
+    },
+    "_geoloc": [{ "lat": 12.9716, "lon": 77.5946 }]
+  },
+  {
+    "id": "mock-mobile-007",
+    "apply_url": "https://example.com/jobs/mock-mobile-007",
+    "job_information": {
+      "title": "Mobile Engineer",
+      "job_title_raw": "Mobile Engineer",
+      "description": "Build iOS features for a digital wallet app.",
+      "stripped_description": "Build iOS features for a digital wallet app.",
+      "company_info": { "name": "PocketPay" }
+    },
+    "v5_processed_company_data": {
+      "name": "PocketPay",
+      "image_url": "",
+      "subsidiaries": [],
+      "parent_company": null,
+      "website": "https://pocketpay.example",
+      "linkedin_url": "",
+      "industries": ["Fintech"],
+      "activities": ["payments", "mobile apps"],
+      "tagline": "Pay anywhere, anytime.",
+      "is_non_profit": false,
+      "is_public_company": false,
+      "is_dissolved": false,
+      "is_acquired": false,
+      "num_employees": 150,
+      "year_founded": 2016,
+      "headquarters_country": "United States",
+      "total_funding_amount": null,
+      "total_funding_currency": null,
+      "latest_investment_amount": null,
+      "latest_investment_currency": null,
+      "latest_investment_year": null,
+      "latest_investment_series": null,
+      "investors": [],
+      "stock_exchange": "",
+      "stock_symbol": "",
+      "latest_revenue": 0,
+      "latest_revenue_currency": "USD",
+      "latest_revenue_year": 0
+    },
+    "v7_processed_job_data": {
+      "estimated_post_date": "2026-02-01T00:00:00Z",
+      "schedule_requirements": {
+        "shifts": {
+          "on_call_requirement": "None",
+          "holiday_availability_required": false,
+          "weekend_availability_required": false,
+          "overtime_required": false,
+          "shift_types_available": []
+        },
+        "travel": {
+          "land_travel_requirement": "None",
+          "air_travel_requirement": "None"
+        }
+      },
+      "embedding_text_explicit": "",
+      "education": { "explicit": [], "inferred": [] },
+      "work_arrangement": {
+        "workplace_type": "Remote",
+        "individual_contributor_or_people_manager": "Individual Contributor",
+        "commitment": ["Full Time"],
+        "workplace_locations": [
+          {
+            "continent": "North America",
+            "country_code": "US",
+            "city": "Austin",
+            "kind": "city",
+            "county": "Travis County",
+            "geographic_coordinates": { "lon": -97.7431, "lat": 30.2672 },
+            "state": "Texas"
+          }
+        ]
+      },
+      "original_job_description_language": "en",
+      "credentials": { "explicit": [], "inferred": [] },
+      "diversity_hiring": { "military_veterans": false, "fair_chance": false },
+      "embedding_inferred_vector": [],
+      "geo_locations": [],
+      "embedding_text_company": "",
+      "skills": {
+        "explicit": [
+          { "expanded_terms": ["swift"], "value": "Swift" },
+          { "expanded_terms": ["ios"], "value": "iOS" },
+          { "expanded_terms": ["uikit"], "value": "UIKit" }
+        ],
+        "inferred": []
+      },
+      "company_profile": {
+        "website": "https://pocketpay.example",
+        "activities": ["payments", "mobile apps"],
+        "name": "PocketPay",
+        "organization_types": ["Private Company"],
+        "tagline": "Pay anywhere, anytime.",
+        "industry": "Fintech"
+      },
+      "job_titles": {
+        "explicit": { "expanded_terms": ["ios engineer", "mobile developer"], "value": "Mobile Engineer" },
+        "inferred": [
+          { "expanded_terms": ["ios developer"], "value": "iOS Developer" }
+        ]
+      },
+      "embedding_company_vector": [],
+      "compensation_and_benefits": {
+        "benefits": {
+          "tuition_reimbursement": false,
+          "retirement_plan": true,
+          "visa_sponsorship": false,
+          "relocation_assistance": false,
+          "generous_paid_time_off": true,
+          "generous_parental_leave": false,
+          "401k_matching": true,
+          "four_day_work_week": false
+        },
+        "salary": { "high": 150000, "low": 120000, "currency": "USD", "frequency": "Yearly" }
+      },
+      "embedding_text_inferred": "",
+      "processed_at": "2026-02-01T00:00:00Z",
+      "embedding_explicit_vector": [],
+      "experience_requirements": {
+        "min_years_breakdown": { "industry_and_role_yoe": 3, "management_and_leadership_yoe": 0 },
+        "security_clearance": "None",
+        "seniority_level": "Mid",
+        "language_requirements": ["English"],
+        "is_driver_license_required": false,
+        "requirements_summary": "3+ years shipping iOS apps."
+      }
+    },
+    "_geoloc": [{ "lat": 30.2672, "lon": -97.7431 }]
+  },
+  {
+    "id": "mock-qa-008",
+    "apply_url": "https://example.com/jobs/mock-qa-008",
+    "job_information": {
+      "title": "QA Engineer",
+      "job_title_raw": "QA Engineer",
+      "description": "Test web features and automate regression suites.",
+      "stripped_description": "Test web features and automate regression suites.",
+      "company_info": { "name": "QualityFirst" }
+    },
+    "v5_processed_company_data": {
+      "name": "QualityFirst",
+      "image_url": "",
+      "subsidiaries": [],
+      "parent_company": null,
+      "website": "https://qualityfirst.example",
+      "linkedin_url": "",
+      "industries": ["Testing Services"],
+      "activities": ["quality assurance", "test automation"],
+      "tagline": "Quality you can ship.",
+      "is_non_profit": false,
+      "is_public_company": false,
+      "is_dissolved": false,
+      "is_acquired": false,
+      "num_employees": 60,
+      "year_founded": 2017,
+      "headquarters_country": "Poland",
+      "total_funding_amount": null,
+      "total_funding_currency": null,
+      "latest_investment_amount": null,
+      "latest_investment_currency": null,
+      "latest_investment_year": null,
+      "latest_investment_series": null,
+      "investors": [],
+      "stock_exchange": "",
+      "stock_symbol": "",
+      "latest_revenue": 0,
+      "latest_revenue_currency": "PLN",
+      "latest_revenue_year": 0
+    },
+    "v7_processed_job_data": {
+      "estimated_post_date": "2026-02-01T00:00:00Z",
+      "schedule_requirements": {
+        "shifts": {
+          "on_call_requirement": "None",
+          "holiday_availability_required": false,
+          "weekend_availability_required": false,
+          "overtime_required": false,
+          "shift_types_available": []
+        },
+        "travel": {
+          "land_travel_requirement": "None",
+          "air_travel_requirement": "None"
+        }
+      },
+      "embedding_text_explicit": "",
+      "education": { "explicit": [], "inferred": [] },
+      "work_arrangement": {
+        "workplace_type": "Onsite",
+        "individual_contributor_or_people_manager": "Individual Contributor",
+        "commitment": ["Part Time"],
+        "workplace_locations": [
+          {
+            "continent": "Europe",
+            "country_code": "PL",
+            "city": "Warsaw",
+            "kind": "city",
+            "county": "Warsaw",
+            "geographic_coordinates": { "lon": 21.0122, "lat": 52.2297 },
+            "state": "Masovian"
+          }
+        ]
+      },
+      "original_job_description_language": "en",
+      "credentials": { "explicit": [], "inferred": [] },
+      "diversity_hiring": { "military_veterans": false, "fair_chance": false },
+      "embedding_inferred_vector": [],
+      "geo_locations": [],
+      "embedding_text_company": "",
+      "skills": {
+        "explicit": [
+          { "expanded_terms": ["cypress"], "value": "Cypress" },
+          { "expanded_terms": ["playwright"], "value": "Playwright" },
+          { "expanded_terms": ["testing", "qa"], "value": "Testing" }
+        ],
+        "inferred": []
+      },
+      "company_profile": {
+        "website": "https://qualityfirst.example",
+        "activities": ["quality assurance", "test automation"],
+        "name": "QualityFirst",
+        "organization_types": ["Private Company"],
+        "tagline": "Quality you can ship.",
+        "industry": "Testing Services"
+      },
+      "job_titles": {
+        "explicit": {
+          "expanded_terms": ["quality assurance engineer", "test engineer"],
+          "value": "QA Engineer"
+        },
+        "inferred": [
+          { "expanded_terms": ["software tester"], "value": "Software Tester" }
+        ]
+      },
+      "embedding_company_vector": [],
+      "compensation_and_benefits": {
+        "benefits": {
+          "tuition_reimbursement": false,
+          "retirement_plan": false,
+          "visa_sponsorship": false,
+          "relocation_assistance": false,
+          "generous_paid_time_off": false,
+          "generous_parental_leave": false,
+          "401k_matching": false,
+          "four_day_work_week": false
+        },
+        "salary": { "high": 50000, "low": 35000, "currency": "PLN", "frequency": "Yearly" }
+      },
+      "embedding_text_inferred": "",
+      "processed_at": "2026-02-01T00:00:00Z",
+      "embedding_explicit_vector": [],
+      "experience_requirements": {
+        "min_years_breakdown": { "industry_and_role_yoe": 1, "management_and_leadership_yoe": 0 },
+        "security_clearance": "None",
+        "seniority_level": "Junior",
+        "language_requirements": ["English"],
+        "is_driver_license_required": false,
+        "requirements_summary": "1+ years of QA or testing experience."
+      }
+    },
+    "_geoloc": [{ "lat": 52.2297, "lon": 21.0122 }]
+  },
+  {
+    "id": "mock-csm-009",
+    "apply_url": "https://example.com/jobs/mock-csm-009",
+    "job_information": {
+      "title": "Customer Success Manager",
+      "job_title_raw": "Customer Success Manager",
+      "description": "Drive adoption and retention for key customer accounts.",
+      "stripped_description": "Drive adoption and retention for key customer accounts.",
+      "company_info": { "name": "Harbor CRM" }
+    },
+    "v5_processed_company_data": {
+      "name": "Harbor CRM",
+      "image_url": "",
+      "subsidiaries": [],
+      "parent_company": null,
+      "website": "https://harborcrm.example",
+      "linkedin_url": "",
+      "industries": ["CRM"],
+      "activities": ["customer success", "account management"],
+      "tagline": "Relationships that scale.",
+      "is_non_profit": false,
+      "is_public_company": false,
+      "is_dissolved": false,
+      "is_acquired": false,
+      "num_employees": 220,
+      "year_founded": 2011,
+      "headquarters_country": "Australia",
+      "total_funding_amount": null,
+      "total_funding_currency": null,
+      "latest_investment_amount": null,
+      "latest_investment_currency": null,
+      "latest_investment_year": null,
+      "latest_investment_series": null,
+      "investors": [],
+      "stock_exchange": "",
+      "stock_symbol": "",
+      "latest_revenue": 0,
+      "latest_revenue_currency": "AUD",
+      "latest_revenue_year": 0
+    },
+    "v7_processed_job_data": {
+      "estimated_post_date": "2026-02-01T00:00:00Z",
+      "schedule_requirements": {
+        "shifts": {
+          "on_call_requirement": "None",
+          "holiday_availability_required": false,
+          "weekend_availability_required": false,
+          "overtime_required": false,
+          "shift_types_available": []
+        },
+        "travel": {
+          "land_travel_requirement": "Minimal",
+          "air_travel_requirement": "Minimal"
+        }
+      },
+      "embedding_text_explicit": "",
+      "education": { "explicit": [], "inferred": [] },
+      "work_arrangement": {
+        "workplace_type": "Hybrid",
+        "individual_contributor_or_people_manager": "People Manager",
+        "commitment": ["Full Time"],
+        "workplace_locations": [
+          {
+            "continent": "Oceania",
+            "country_code": "AU",
+            "city": "Sydney",
+            "kind": "city",
+            "county": "Sydney",
+            "geographic_coordinates": { "lon": 151.2093, "lat": -33.8688 },
+            "state": "New South Wales"
+          }
+        ]
+      },
+      "original_job_description_language": "en",
+      "credentials": { "explicit": [], "inferred": [] },
+      "diversity_hiring": { "military_veterans": false, "fair_chance": false },
+      "embedding_inferred_vector": [],
+      "geo_locations": [],
+      "embedding_text_company": "",
+      "skills": {
+        "explicit": [
+          { "expanded_terms": ["salesforce"], "value": "Salesforce" },
+          { "expanded_terms": ["crm"], "value": "CRM" },
+          { "expanded_terms": ["communication"], "value": "Communication" }
+        ],
+        "inferred": []
+      },
+      "company_profile": {
+        "website": "https://harborcrm.example",
+        "activities": ["customer success", "account management"],
+        "name": "Harbor CRM",
+        "organization_types": ["Private Company"],
+        "tagline": "Relationships that scale.",
+        "industry": "CRM"
+      },
+      "job_titles": {
+        "explicit": {
+          "expanded_terms": ["csm", "client success manager"],
+          "value": "Customer Success Manager"
+        },
+        "inferred": [
+          { "expanded_terms": ["account manager"], "value": "Account Manager" }
+        ]
+      },
+      "embedding_company_vector": [],
+      "compensation_and_benefits": {
+        "benefits": {
+          "tuition_reimbursement": false,
+          "retirement_plan": true,
+          "visa_sponsorship": false,
+          "relocation_assistance": false,
+          "generous_paid_time_off": true,
+          "generous_parental_leave": true,
+          "401k_matching": false,
+          "four_day_work_week": false
+        },
+        "salary": { "high": 135000, "low": 105000, "currency": "AUD", "frequency": "Yearly" }
+      },
+      "embedding_text_inferred": "",
+      "processed_at": "2026-02-01T00:00:00Z",
+      "embedding_explicit_vector": [],
+      "experience_requirements": {
+        "min_years_breakdown": { "industry_and_role_yoe": 5, "management_and_leadership_yoe": 1 },
+        "security_clearance": "None",
+        "seniority_level": "Senior",
+        "language_requirements": ["English"],
+        "is_driver_license_required": false,
+        "requirements_summary": "5+ years in customer success roles."
+      }
+    },
+    "_geoloc": [{ "lat": -33.8688, "lon": 151.2093 }]
+  },
+  {
+    "id": "mock-nonprofit-010",
+    "apply_url": "https://example.com/jobs/mock-nonprofit-010",
+    "job_information": {
+      "title": "Program Coordinator",
+      "job_title_raw": "Program Coordinator",
+      "description": "Coordinate community programs and manage reporting.",
+      "stripped_description": "Coordinate community programs and manage reporting.",
+      "company_info": { "name": "GreenFuture Foundation" }
+    },
+    "v5_processed_company_data": {
+      "name": "GreenFuture Foundation",
+      "image_url": "",
+      "subsidiaries": [],
+      "parent_company": null,
+      "website": "https://greenfuture.example",
+      "linkedin_url": "",
+      "industries": ["Nonprofit"],
+      "activities": ["community programs", "sustainability"],
+      "tagline": "Building resilient communities.",
+      "is_non_profit": true,
+      "is_public_company": false,
+      "is_dissolved": false,
+      "is_acquired": false,
+      "num_employees": 90,
+      "year_founded": 2005,
+      "headquarters_country": "Kenya",
+      "total_funding_amount": null,
+      "total_funding_currency": null,
+      "latest_investment_amount": null,
+      "latest_investment_currency": null,
+      "latest_investment_year": null,
+      "latest_investment_series": null,
+      "investors": [],
+      "stock_exchange": "",
+      "stock_symbol": "",
+      "latest_revenue": 0,
+      "latest_revenue_currency": "USD",
+      "latest_revenue_year": 0
+    },
+    "v7_processed_job_data": {
+      "estimated_post_date": "2026-02-01T00:00:00Z",
+      "schedule_requirements": {
+        "shifts": {
+          "on_call_requirement": "None",
+          "holiday_availability_required": false,
+          "weekend_availability_required": false,
+          "overtime_required": false,
+          "shift_types_available": []
+        },
+        "travel": {
+          "land_travel_requirement": "Minimal",
+          "air_travel_requirement": "None"
+        }
+      },
+      "embedding_text_explicit": "",
+      "education": { "explicit": [], "inferred": [] },
+      "work_arrangement": {
+        "workplace_type": "Onsite",
+        "individual_contributor_or_people_manager": "Individual Contributor",
+        "commitment": ["Full Time"],
+        "workplace_locations": [
+          {
+            "continent": "Africa",
+            "country_code": "KE",
+            "city": "Nairobi",
+            "kind": "city",
+            "county": "Nairobi County",
+            "geographic_coordinates": { "lon": 36.817223, "lat": -1.286389 },
+            "state": "Nairobi"
+          }
+        ]
+      },
+      "original_job_description_language": "en",
+      "credentials": { "explicit": [], "inferred": [] },
+      "diversity_hiring": { "military_veterans": false, "fair_chance": false },
+      "embedding_inferred_vector": [],
+      "geo_locations": [],
+      "embedding_text_company": "",
+      "skills": {
+        "explicit": [
+          { "expanded_terms": ["program management"], "value": "Program Management" },
+          { "expanded_terms": ["grant writing"], "value": "Grant Writing" },
+          { "expanded_terms": ["reporting"], "value": "Reporting" }
+        ],
+        "inferred": []
+      },
+      "company_profile": {
+        "website": "https://greenfuture.example",
+        "activities": ["community programs", "sustainability"],
+        "name": "GreenFuture Foundation",
+        "organization_types": ["Nonprofit"],
+        "tagline": "Building resilient communities.",
+        "industry": "Nonprofit"
+      },
+      "job_titles": {
+        "explicit": {
+          "expanded_terms": ["program officer", "project coordinator"],
+          "value": "Program Coordinator"
+        },
+        "inferred": [
+          { "expanded_terms": ["project coordinator"], "value": "Project Coordinator" }
+        ]
+      },
+      "embedding_company_vector": [],
+      "compensation_and_benefits": {
+        "benefits": {
+          "tuition_reimbursement": false,
+          "retirement_plan": false,
+          "visa_sponsorship": false,
+          "relocation_assistance": false,
+          "generous_paid_time_off": true,
+          "generous_parental_leave": false,
+          "401k_matching": false,
+          "four_day_work_week": false
+        },
+        "salary": { "high": 55000, "low": 40000, "currency": "USD", "frequency": "Yearly" }
+      },
+      "embedding_text_inferred": "",
+      "processed_at": "2026-02-01T00:00:00Z",
+      "embedding_explicit_vector": [],
+      "experience_requirements": {
+        "min_years_breakdown": { "industry_and_role_yoe": 3, "management_and_leadership_yoe": 0 },
+        "security_clearance": "None",
+        "seniority_level": "Mid",
+        "language_requirements": ["English"],
+        "is_driver_license_required": false,
+        "requirements_summary": "3+ years coordinating programs."
+      }
+    },
+    "_geoloc": [{ "lat": -1.286389, "lon": 36.817223 }]
+  }
+]
