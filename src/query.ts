@@ -4,6 +4,8 @@ import { buildHardPredicate } from "./filters";
 import { parseQuery } from "./parser";
 import { createJobStream, defaultDataPath } from "./data_source";
 import { ensureSession, getSessionIds, setSessionIds } from "./session";
+import type { JobSummary } from "./job_summary";
+import { toJobSummary } from "./job_summary";
 
 const DEFAULT_QUERY_LIMIT = 200;
 
@@ -22,14 +24,15 @@ export type QueryStreamOptions = {
 };
 
 export type QueryStreamResult = {
-  readonly ids: ReadonlyArray<string>;
+  readonly ids: ReadonlyArray<string>; // TODO: remove it, it can be fetch from results
+  readonly results: ReadonlyArray<JobSummary>;
   readonly count: number;
 };
 
 export type QueryResponse = {
   readonly session_id: string;
   readonly count: number;
-  readonly ids: ReadonlyArray<string>;
+  readonly results: ReadonlyArray<JobSummary>;
 };
 
 export const query = async (
@@ -50,7 +53,9 @@ export const query = async (
     sessionIds.length === 0 ? source : filterByIds(source, new Set(sessionIds));
 
   console.log("[query] initiating pipeline handling", sessionId);
-  const { ids, count } = await queryStream(sessionJobs, filters, { limit });
+  const { ids, results, count } = await queryStream(sessionJobs, filters, {
+    limit,
+  });
 
   console.log("[query] done. updating session with returned IDs", sessionId);
   setSessionIds(sessionId, ids);
@@ -58,7 +63,7 @@ export const query = async (
   return {
     session_id: sessionId,
     count,
-    ids,
+    results,
   };
 };
 
@@ -74,18 +79,20 @@ export const queryStream = async (
 
   const predicate = buildHardPredicate(filters);
   const ids: string[] = [];
+  const results: JobSummary[] = [];
 
   for await (const job of source) {
     if (!predicate(job)) {
       continue;
     }
     ids.push(job.id);
+    results.push(toJobSummary(job));
     if (ids.length >= limit) {
       break;
     }
   }
 
-  return { ids, count: ids.length };
+  return { ids, results, count: ids.length };
 };
 
 export const filterByIds = async function* (

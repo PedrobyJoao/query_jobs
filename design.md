@@ -181,3 +181,21 @@ For the next iteration:
 
 A `query` func will simply rely on an async iterator instead
 of all data loaded at once.
+
+### v0.1. Brainstorming: Tradeoffs, decisions and challenges
+
+**UX: returning full jobs info is quite messy**
+
+when testing, I realized that returning the full Job info
+was just messy. Then I decided to create a summary version of the
+Job type, and use it to return to callers.
+
+**taking too much time to iterate all jobs**
+
+When a limit of 200 jobs is set on the query, it takes minutes to return the result.
+
+### v0.1. Done: what it can do, and it's next
+
+- query with asyncIterator instead of loading all data at once
+- JobSummary UX instead of returning the whole job info
+- TODO: count number of jobs analyzed
