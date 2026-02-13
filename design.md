@@ -149,8 +149,30 @@ be a good option here (and I'm not even sure).
 
 Instead, it's best to have our AI-parser to generate synonyms for job titles.
 
-### 0.0. For the next iteration:
+**loading all data at once**
 
-1. soft filters
+It seems it's not a good idea to load all data at once. Nodejs can not handle it.
+But I don't think the runtime is the one to blame.
+
+Since we don't have indexing yet, let's simple consume one json element at a time.
+
+> even for indexing, I don't think we need to load the entire data.
+
+### v0.0. Done: what it can do, and it's next
+
+**v0.0** deliveries a functional tool that can **query non-big json payloads**
+using **only hard filters**. It features a REST API and a session mechanism
+for state reusage.
+
+For the next iteration:
+
+1. Support to big data payloads
 2. refine
-3. bm25, score analysis + indexing
+3. soft filters
+4. UX for testing: REPL using the REST API
+5. bm25, score analysis + indexing
+
+## v0.1: Deliverables
+
+1. Support to big data payloads
+2. refine

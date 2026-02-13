@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
-import readline from "node:readline";
+import path from "node:path";
 
 import type { Job } from "./schema";
 import { parseQuery } from "./parser";
@@ -29,25 +29,36 @@ export const ensureDataLoaded = async (dataPath: string): Promise<void> => {
   if (cachedJobs) {
     return;
   }
+  console.log("[ensureDataLoaded] loading jobs from", dataPath);
   const jobs = await loadJobs(dataPath);
+  console.log("[ensureDataLoaded] loaded", jobs.length, "jobs");
   cachedJobs = jobs;
   cachedJobsById = new Map(jobs.map((job) => [job.id, job]));
 };
 
 const loadJobs = async (dataPath: string): Promise<ReadonlyArray<Job>> => {
-  const stream = fs.createReadStream(dataPath, { encoding: "utf8" });
-  const rl = readline.createInterface({ input: stream, crlfDelay: Infinity });
-  const jobs: Job[] = [];
+  const format = dataFormatFromPath(dataPath);
+  return format === "json" ? readJson(dataPath) : readJsonL(dataPath);
+};
 
-  for await (const line of rl) {
-    const trimmed = line.trim();
-    if (trimmed.length === 0) {
-      continue;
-    }
-    jobs.push(JSON.parse(trimmed) as Job);
+const dataFormatFromPath = (dataPath: string): "json" | "jsonl" => {
+  const extension = path.extname(dataPath).toLowerCase();
+  if (extension === ".json") {
+    return "json";
   }
+  if (extension === ".jsonl" || extension === ".ndjson") {
+    return "jsonl";
+  }
+  throw new Error("Unsupported data file extension");
+};
 
-  return jobs;
+const readJson = async (dataPath: string): Promise<ReadonlyArray<Job>> => {
+  const raw = await fs.promises.readFile(dataPath, "utf8");
+  const parsed = JSON.parse(raw);
+  if (!Array.isArray(parsed)) {
+    throw new Error("Expected a JSON array of jobs");
+  }
+  return parsed as Job[];
 };
 
 const ensureSession = (sessionId?: string): string => {
@@ -77,6 +88,7 @@ export const search = async (input: SearchInput): Promise<SearchResponse> => {
 
   const baseData = selectJobsForSession(sessionId);
   const filters = await parseQuery(input.query);
+  console.log("[search] filters", JSON.stringify(filters));
   const results = query(baseData, filters);
   const nextIds = results.map((job) => job.id);
 
@@ -87,4 +99,89 @@ export const search = async (input: SearchInput): Promise<SearchResponse> => {
     count: results.length,
     results,
   };
+};
+
+// TODO: we should use a library instead of writing this whole logic
+const readJsonL = async (dataPath: string): Promise<ReadonlyArray<Job>> => {
+  const stream = fs.createReadStream(dataPath, { encoding: "utf8" });
+  const jobs: Job[] = [];
+
+  let started = false;
+  let depth = 0;
+  let inString = false;
+  let escape = false;
+  let buffer = "";
+
+  const flush = () => {
+    if (buffer.length === 0) {
+      return;
+    }
+    jobs.push(JSON.parse(buffer) as Job);
+    buffer = "";
+  };
+
+  for await (const chunk of stream) {
+    const text = chunk.toString();
+    for (let index = 0; index < text.length; index += 1) {
+      const char = text[index];
+
+      if (!started) {
+        if (char === "\uFEFF") {
+          continue;
+        }
+        if (char === "{") {
+          started = true;
+          depth = 1;
+          buffer = "{";
+          continue;
+        }
+        if (/\s/.test(char)) {
+          continue;
+        }
+        if (char === "[") {
+          throw new Error("JSON array detected; use a .json file");
+        }
+        continue;
+      }
+
+      buffer += char;
+
+      if (inString) {
+        if (escape) {
+          escape = false;
+          continue;
+        }
+        if (char === "\\") {
+          escape = true;
+          continue;
+        }
+        if (char === '"') {
+          inString = false;
+        }
+        continue;
+      }
+
+      if (char === '"') {
+        inString = true;
+        continue;
+      }
+      if (char === "{") {
+        depth += 1;
+        continue;
+      }
+      if (char === "}") {
+        depth -= 1;
+        if (depth === 0) {
+          flush();
+          started = false;
+        }
+      }
+    }
+  }
+
+  if (started || buffer.length > 0) {
+    throw new Error("Incomplete JSON object in JSONL file");
+  }
+
+  return jobs;
 };
