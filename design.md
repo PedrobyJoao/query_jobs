@@ -158,6 +158,10 @@ Since we don't have indexing yet, let's simple consume one json element at a tim
 
 > even for indexing, I don't think we need to load the entire data.
 
+**v5 data**
+
+ignore v5 data since it's legacy.
+
 ### v0.0. Done: what it can do, and it's next
 
 **v0.0** deliveries a functional tool that can **query non-big json payloads**
@@ -182,7 +186,7 @@ For the next iteration:
 A `query` func will simply rely on an async iterator instead
 of all data loaded at once.
 
-### v0.1. Brainstorming: Tradeoffs, decisions and challenges
+### v0.1. Tradeoffs, decisions and challenges
 
 **UX: returning full jobs info is quite messy**
 
@@ -193,9 +197,26 @@ Job type, and use it to return to callers.
 **taking too much time to iterate all jobs**
 
 When a limit of 200 jobs is set on the query, it takes minutes to return the result.
+Of course it scans almost all the 100k jobs
 
 ### v0.1. Done: what it can do, and it's next
 
 - query with asyncIterator instead of loading all data at once
-- JobSummary UX instead of returning the whole job info
-- TODO: count number of jobs analyzed
+- Result UX:
+  - JobSummary UX instead of returning the whole job info
+  - count number of jobs scanned
+  - elapsed time of query
+- refine: is naturally implemented with sessions. If you query using
+  a live session ID, the query will rely only on the already filtered jobs.
+
+**What is next:**
+
+1. soft filters
+2. UX for testing: REPL using the REST API
+3. Faster query results
+   3.0. refine is particularly slow: write a offset index since jsonl has one json elem per line,
+   this index will map id -> json line, and then we can retrieve the specific json line given id.
+   3.1. parser library instead of per-char parsing
+   3.2. token normalization and rebuilding overhead?
+   3.3. concurrent parsing or concurrent filtering
+4. bm25, score analysis + indexing
