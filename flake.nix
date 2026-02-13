@@ -23,6 +23,7 @@
             pkgs.typescript-language-server
             pkgs.python3
             pkgs.nodejs
+            pkgs.tsx
             pkgs.nodePackages.typescript
             pkgs.nodePackages.eslint
             pkgs.nodePackages.prettier
