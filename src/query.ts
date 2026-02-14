@@ -4,7 +4,7 @@ import type { Job } from "./schema";
 import type { Filters } from "./filters";
 import { buildHardPredicate } from "./filters";
 import { parseQuery } from "./parser";
-import { createJobStream, defaultDataPath } from "./data_source";
+import { createJobStream, defaultDataPath } from "./json_parsing";
 import { ensureSession, getSessionIds, setSessionIds } from "./session";
 import type { JobSummary } from "./job_summary";
 import { toJobSummary } from "./job_summary";
@@ -72,11 +72,9 @@ export const query = async (
   const elapsedSec = (performance.now() - startTime) / MS_PER_SEC;
   const elapsedSecRounded = Number(elapsedSec.toFixed(3));
 
-  console.log(
-    "[query] done. updating session with returned IDs",
-    sessionId,
-    { elapsedSec: elapsedSecRounded },
-  );
+  console.log("[query] done. updating session with returned IDs", sessionId, {
+    elapsedSec: elapsedSecRounded,
+  });
   setSessionIds(sessionId, ids);
 
   return {
