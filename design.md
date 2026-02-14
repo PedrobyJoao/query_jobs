@@ -101,7 +101,7 @@ def main():
 
 - Considering jobs are not indexed, the jobs list must be iterated at most once for each query.
 
-### v0.0. Brainstorming: Tradeoffs, decisions and challenges
+### v0.0. Thoughts: Tradeoffs, decisions and challenges
 
 **should refine be strictly narrowing (monotonic), or can it broaden results?**
 
@@ -162,7 +162,7 @@ Since we don't have indexing yet, let's simple consume one json element at a tim
 
 ignore v5 data since it's legacy.
 
-### v0.0. Done: what it can do, and it's next
+### v0.0. Done: what it can do, and what it's next
 
 **v0.0** deliveries a functional tool that can **query non-big json payloads**
 using **only hard filters**. It features a REST API and a session mechanism
@@ -172,7 +172,7 @@ For the next iteration:
 
 1. Support to big data payloads
 2. refine
-3. soft filters
+3. soft filters: cosine similarity with embedding
 4. UX for testing: REPL using the REST API
 5. bm25, score analysis + indexing
 
@@ -186,7 +186,7 @@ For the next iteration:
 A `query` func will simply rely on an async iterator instead
 of all data loaded at once.
 
-### v0.1. Tradeoffs, decisions and challenges
+### v0.1. Thoughts: Tradeoffs, decisions and challenges
 
 **UX: returning full jobs info is quite messy**
 
@@ -199,7 +199,7 @@ Job type, and use it to return to callers.
 When a limit of 200 jobs is set on the query, it takes minutes to return the result.
 Of course it scans almost all the 100k jobs
 
-### v0.1. Done: what it can do, and it's next
+### v0.1. Done: what it can do, and what it's next
 
 - query with asyncIterator instead of loading all data at once
 - Result UX:
@@ -211,12 +211,44 @@ Of course it scans almost all the 100k jobs
 
 **What is next:**
 
-1. soft filters
+1. soft filters: cosine similarity with embedding
 2. UX for testing: REPL using the REST API
-3. Faster query results
+3. sort by date
+4. Faster query results
    3.0. refine is particularly slow: write a offset index since jsonl has one json elem per line,
    this index will map id -> json line, and then we can retrieve the specific json line given id.
    3.1. parser library instead of per-char parsing
    3.2. token normalization and rebuilding overhead?
    3.3. concurrent parsing or concurrent filtering
+5. bm25, score analysis + indexing
+
+## v0.2: Deliverables
+
+Before continuing, I started to wonder if having soft "filtering" is indeed
+higher, priority-wise, than having faster query results.
+
+If you stop to think, soft "filters" will be generally used to sort data to
+user in relevance, not really filter. It's just a ranking mechanism.
+
+Although, **ranking through soft intent** is important, I'm pretty sure, at least personally speaking, that
+having hard filters + fast query responses are what I would need the most.
+
+Even more important than relevance ranking, is to have data sorted by date. When I'm applying to
+jobs, I don't want to mess with jobs posted more than two weeks ago.
+
+Anyway, the **What is next** order is changed to:
+
+1. Faster query results
+2. sort by date
+3. soft filters: cosine similarity with embedding
 4. bm25, score analysis + indexing
+5. UX for testing: REPL using the REST API
+
+**Deliverables:**
+
+1. Faster query results
+   1.0. parser library instead of per-char parsing
+   1.1. refine is particularly slow: write a offset index since jsonl has one json elem per line,
+   this index will map id -> json line, and then we can retrieve the specific json line given id.
+   1.2. token normalization and rebuilding overhead?
+   1.3. concurrent parsing or concurrent filtering
