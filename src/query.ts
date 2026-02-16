@@ -10,7 +10,7 @@ import type { JobSummary } from "./job_summary";
 import { toJobSummary } from "./job_summary";
 
 const MS_PER_SEC = 1000;
-const DEFAULT_QUERY_LIMIT = 200;
+const DEFAULT_QUERY_LIMIT = 15;
 
 export type QueryInput = {
   readonly query: string;
