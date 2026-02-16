@@ -1,4 +1,4 @@
-Hours spent: ~13hrs
+Hours spent: ~14hrs
 
 # Query and refine your job search
 
@@ -6,7 +6,51 @@ This tool features job search, with refinement, using natural language.
 
 ## How to use
 
-todo
+Requirements:
+
+- npm
+- tsx
+- An OpenAI API key
+
+1. Install dependencies:
+
+```
+npm install
+```
+
+2. Set your OpenAI key (and optionally model/port):
+
+```
+export OPENAI_API_KEY="..."
+export OPENAI_MODEL="gpt-4o-mini" # optional
+export PORT=3000 # optional
+```
+
+3. Important: place the dataset at `data.jsonl` within the root directory of the repo (JSONL, one job per line or normal `.json`).
+
+4. Start the API:
+
+```
+npx tsx src/main.ts
+```
+
+5. Search:
+
+```
+curl -sS http://localhost:3000/query \
+  -H "content-type: application/json" \
+  -d '{"query":"data science jobs remote","limit":15}'
+```
+
+6. Refine (reuse `session_id` from the previous response):
+
+```
+curl -sS http://localhost:3000/query \
+  -H "content-type: application/json" \
+  -d '{"query":"non-profit","session_id":"<session-id>","limit":10}'
+```
+
+The response includes `session_id`, `results`, `count`, `scannedJobs`, and `elapsedSec`. If you omit `limit`, it defaults to 15.
 
 ## How it works
 
